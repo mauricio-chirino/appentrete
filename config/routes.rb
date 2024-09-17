@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "page/index"
   resources :documentary_films
   resources :series
   resources :films
@@ -13,5 +14,5 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   # Defines the root path route ("/")
-  # root "posts#index"
+   root "page#index"
 end
