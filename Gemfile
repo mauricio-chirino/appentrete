@@ -44,8 +44,8 @@ group :development, :test do
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
 
-  # agregar faker
-  gem 'faker'
+  # agregar tmdb
+  gem 'tmdb'
 end
 
 group :development do
