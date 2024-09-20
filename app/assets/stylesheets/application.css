@@ -13,3 +13,34 @@
  *= require_tree .
  *= require_self
  */
+
+
+.card-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 6; /* Limitar a 6 líneas */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 10.5em; /* Ajustar según el tamaño de línea */
+}
+
+
+.card-title  
+  {display: -webkit-box;
+  -webkit-line-clamp: 1; /* Limitar a 6 líneas */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 8em; /* Ajustar según el tamaño de línea */
+}
+
+
+
+.empty-text {
+    background-color: #f8f9fa; /* O cualquier color de fondo */
+    height: 6em; /* Una altura predeterminada para mantener consistencia */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #6c757d; /* Color de texto apagado */
+}

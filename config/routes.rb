@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   get "page/index"
+
   resources :documentary_films
-  resources :series
+  #resources :series
+  resources :series, only: [:index]
   resources :films
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

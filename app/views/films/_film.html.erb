@@ -1,22 +1,19 @@
-<div id="<%= dom_id film %>">
-  <p>
-    <strong>Name:</strong>
-    <%= film.name %>
-  </p>
+<!-- controla los espacios vacios en card-tex -->
+<div class="col">
+<%= javascript_include_tag "controllers/espaciovacio_controller" %> 
 
-  <p>
-    <strong>Sinopsis:</strong>
-    <%= film.sinopsis %>
-  </p>
+  <div id="<%= dom_id film %>" class="mt-5" >
 
-  <p>
-    <strong>Director:</strong>
-    <%= film.director %>
-  </p>
 
-  <p>
-    <strong>Imagen:</strong>
-    <%= film.imagen %>
-  </p>
 
-</div>
+        <div class="card" style="">
+          <img src="<%= film.imagen %>" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><%= film.name %></h5>
+              <p class="card-text {{ texto ? '' : 'empty-text' }}"><%= film.sinopsis %>.</p> <!-- controla que no exista texto vacio -->
+              <%= link_to "Ver mas..", film, class: "btn btn-primary" %>
+            </div>
+        </div>
+
+  </div>
+</div>  

@@ -41,9 +41,12 @@
 </div>
   <nav class="navbar bg-body-tertiary">
     <form class="container-fluid justify-content-center">
-      <button class="btn btn-outline-success me-2" type="button">Peliculas</button>
-      <button class="btn btn-outline-danger me-2" type="button">Series</button>
-      <button class="btn btn-outline-primary me-2" type="button">Documentales</button>
+      <%= link_to 'Peliculas', films_path, class: "btn btn-outline-success me-2", role: "button" %>
+
+      <%= link_to 'Series', series_index_path, class: "btn btn-outline-danger me-2", role: "button" %>
+
+      <%= link_to 'Documentales', documentary_films_path, class: "btn btn-outline-primary me-2", role: "button" %>
+
     </form>
   </nav>
 

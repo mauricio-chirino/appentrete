@@ -1,8 +1,3 @@
-<p style="color: green"><%= notice %></p>
-
-<% content_for :title, "Films" %>
-
-<h1>Films pprueba de </h1>
 
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -10,14 +5,15 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="#">AppEntreter</a>
+    <%= link_to 'AppEntreter', page_index_path, class:"navbar-brand", "arial-current" => "page"  %>
+
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <%= link_to 'Inicio', page_index_path, class:"nav-link active", "arial-current" => "page"  %>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+            <%= link_to 'Nuevo', new_film_path, class:"nav-link active", "arial-current" => "page"  %>
         </li>
         <li class="nav-item">
           <a class="nav-link disabled" aria-disabled="true">Disabled</a>
@@ -35,35 +31,16 @@
 
 
 
+ <div id="films">
+  <div class="row row-cols-1 row-cols-sm-4 row-cols-md-4 row-cols-lg-4 ">
+      
+    <% @films.each do |film| %>
 
+      <%= render film %>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div id="films">
-  <% @films.each do |film| %>
-    <%= render film %>
-    <p>
-      <%= link_to "Show this film", film %>
-    </p>
-  <% end %>
+    <% end %>
+  </div>
 </div>
 
-<%= link_to "New film", new_film_path %>
+<!-- <%= link_to "New film", new_film_path %> -->
+
