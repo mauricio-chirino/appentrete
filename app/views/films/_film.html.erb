@@ -2,8 +2,8 @@
 <div class="col">
   <%= javascript_include_tag "controllers/espaciovacio_controller" %>
 
-  <div id="<%= dom_id film %>" class="mt-5" >
-        <div class="card" style="">
+  <div id="<%= dom_id film %>" class="row d-flex justify-content-center align-items-center gap-3 mt-5 " >
+        <div class="card" style="width: 18rem;">
           <img src="<%= film.imagen %>" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title"><%= film.name %></h5>
@@ -21,10 +21,10 @@
                     <%= film.director %>
                   </p>
                 </div>
-                <div class="mt-5 row row-cols-1 row-cols-sm-4 row-cols-md-4 row-cols-lg-4 gap-3 justify-content-between">
-                    <%= link_to "Regresar a Peliculas", films_path, class: "btn btn-primary" %>
-                    <%= link_to "Editar Pelicula", edit_film_path(@film), class: "btn btn-primary"%>
-                    <%= link_to "Eliminar Pelicula", @film, method: :delete, class: "btn btn-danger" %>
+                <div class="d-flex justify-content-center gap-2">
+                    <%= link_to "Regresar", films_path, class: "btn btn-primary" %>
+                    <%= link_to "Editar", edit_film_path(@film), class: "btn btn-primary"%>
+                    <%= link_to "Eliminar", @film, method: :delete, class: "btn btn-danger" %>
                   </div>
 
               <% else %>

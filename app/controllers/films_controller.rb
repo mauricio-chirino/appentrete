@@ -20,6 +20,8 @@ class FilmsController < ApplicationController
 
   # GET /films/1/edit
   def edit
+     #agregado para validar la ruta URL
+     @film = Film.find(params[:id]) 
   end
 
   # POST /films or /films.json

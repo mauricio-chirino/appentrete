@@ -13,9 +13,6 @@
         <li class="nav-item">
             <%= link_to 'Crear Pelicula', new_film_path, class:"nav-link active", "arial-current" => "page"  %>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
@@ -38,12 +35,14 @@
 
   <% content_for :title, "Editing film" %>
 
-  <div class="row center-content ">
-    <%= render "form", film: @film %>
+  <div>
+    <%= render "form", film: @film  %>
   </div>
-  <div class="row row-cols-1 row-cols-sm-4 row-cols-md-4 row-cols-lg-4 gap-3 justify-content-between mt-5 ">
-    <%= link_to "Mostar Peliculas ", @film , class: "btn btn-primary" %>
-    <%= link_to "Regresar a Peliculas", films_path, method: :delete, class: "btn btn-danger" %>
+  <div class="row d-flex justify-content-center align-items-center gap-3  ">
+    <div class="col-6 mt-4 d-flex justify-content-center gap-3 mb-4">
+      <%= link_to "Cancelar", @film , class: "btn btn-primary" %>
+      <%= link_to "Peliculas", films_path, method: :delete, class: "btn btn-danger" %>
+    </div>
   </div>
 
 
