@@ -1,7 +1,7 @@
 <%= form_with(model: film) do |form| %>
   <% if film.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(film.errors.count, "error") %> prohibited this film from being saved:</h2>
+      <h2><%= pluralize(film.errors.count, "error") %> encontrados, no se puede grabar:</h2>
 
       <ul>
         <% film.errors.each do |error| %>
@@ -11,7 +11,53 @@
     </div>
   <% end %>
 
+
+
+
+
+
+<div class="card mt-4" style="width: 18rem;">
+  <% if !params[:new] %>
+  <img src="<%= form.object.imagen%>" class="card-img-top" >
+  <% end %>
+  <div class="card-body">
+    <h5 class="card-title"><%= form.object.name %></h5>
+    <p class="card-text">
+    <div>
+    <%= form.label :Nombre, style: "display: block" %>
+    <%= form.text_field :name, required: true %>
+  </div>
+
   <div>
+    <%= form.label :sinopsis, style: "display: block" %>
+    <%= form.text_field :sinopsis, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :director, style: "display: block" %>
+    <%= form.text_field :director, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :Caratula, style: "display: block" %>
+    <%= form.text_area :imagen, id: "imagen_url", required: true %>
+  </div>
+
+  <div class="mt-2">
+    <%= form.submit "Actualizar Película", class: 'btn btn-primary' %>
+  </div>
+  </p>
+    
+  </div>
+</div>
+
+
+
+
+
+  <%
+=begin%>
+ <div>
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name %>
   </div>
@@ -33,5 +79,8 @@
 
   <div>
     <%= form.submit %>
-  </div>
+  </div> 
+<%
+=end%>
+
 <% end %>

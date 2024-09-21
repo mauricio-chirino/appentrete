@@ -1,12 +1,50 @@
-<% content_for :title, "Editing film" %>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <%= link_to 'AppEntreter', page_index_path, class:"navbar-brand", "arial-current" => "page"  %>
 
-<h1>Editar este Film</h1>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%= link_to 'Inicio', page_index_path, class:"nav-link active", "arial-current" => "page"  %>
+        </li>
+        <li class="nav-item">
+            <%= link_to 'Crear Pelicula', new_film_path, class:"nav-link active", "arial-current" => "page"  %>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Buscar</button>
+      </form>
+    </div>
+  </div>
+</nav>
 
-<%= render "form", film: @film %>
 
-<br>
 
-<div>
-  <%= link_to "Mostar Pelicula", @film %> |
-  <%= link_to "Back to films", films_path %>
-</div>
+
+
+
+
+
+
+
+
+
+  <% content_for :title, "Editing film" %>
+
+  <div class="row center-content ">
+    <%= render "form", film: @film %>
+  </div>
+  <div class="row row-cols-1 row-cols-sm-4 row-cols-md-4 row-cols-lg-4 gap-3 justify-content-between mt-5 ">
+    <%= link_to "Mostar Peliculas ", @film , class: "btn btn-primary" %>
+    <%= link_to "Regresar a Peliculas", films_path, method: :delete, class: "btn btn-danger" %>
+  </div>
+
+
+

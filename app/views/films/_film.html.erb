@@ -1,17 +1,36 @@
 <!-- controla los espacios vacios en card-tex -->
 <div class="col">
-<%= javascript_include_tag "controllers/espaciovacio_controller" %> 
+  <%= javascript_include_tag "controllers/espaciovacio_controller" %>
 
   <div id="<%= dom_id film %>" class="mt-5" >
-
-
-
         <div class="card" style="">
           <img src="<%= film.imagen %>" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title"><%= film.name %></h5>
               <p class="card-text {{ texto ? '' : 'empty-text' }}"><%= film.sinopsis %>.</p> <!-- controla que no exista texto vacio -->
-              <%= link_to "Ver mas..", film, class: "btn btn-primary" %>
+
+              <% if params[:id] %>
+                <% film = Film.find(params[:id]) %>
+                <div id="<%= dom_id film %>">
+                  <p>
+                    <strong>Name:</strong>
+                    <%= film.name %>
+                  </p>
+                  <p>
+                    <strong>Director:</strong>
+                    <%= film.director %>
+                  </p>
+                </div>
+                <div class="mt-5 row row-cols-1 row-cols-sm-4 row-cols-md-4 row-cols-lg-4 gap-3 justify-content-between">
+                    <%= link_to "Regresar a Peliculas", films_path, class: "btn btn-primary" %>
+                    <%= link_to "Editar Pelicula", edit_film_path(@film), class: "btn btn-primary"%>
+                    <%= link_to "Eliminar Pelicula", @film, method: :delete, class: "btn btn-danger" %>
+                  </div>
+
+              <% else %>
+                <%= link_to "Ver mas..", film, class: "btn btn-primary" %>
+              <% end %>
+              
             </div>
         </div>
 

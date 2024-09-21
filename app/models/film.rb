@@ -1,2 +1,4 @@
 class Film < ApplicationRecord
+
+
 end

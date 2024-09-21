@@ -1,6 +1,8 @@
 class FilmsController < ApplicationController
   before_action :set_film, only: %i[ show edit update destroy ]
 
+
+
   # GET /films or /films.json
   def index
     @films = Film.all
@@ -26,7 +28,7 @@ class FilmsController < ApplicationController
 
     respond_to do |format|
       if @film.save
-        format.html { redirect_to @film, notice: "Film was successfully created." }
+        format.html { redirect_to @film, notice: "La pelicula fue creada." }
         format.json { render :show, status: :created, location: @film }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +41,7 @@ class FilmsController < ApplicationController
   def update
     respond_to do |format|
       if @film.update(film_params)
-        format.html { redirect_to @film, notice: "Film was successfully updated." }
+        format.html { redirect_to @film, notice: "La pelicula fue Actualizada." }
         format.json { render :show, status: :ok, location: @film }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,7 +55,7 @@ class FilmsController < ApplicationController
     @film.destroy!
 
     respond_to do |format|
-      format.html { redirect_to films_path, status: :see_other, notice: "Film was successfully destroyed." }
+      format.html { redirect_to films_path, status: :see_other, notice: "La pelicula fue borrada." }
       format.json { head :no_content }
     end
   end
