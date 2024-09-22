@@ -1,3 +1,54 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <%= link_to 'AppEntreter', page_index_path, class:"navbar-brand", "arial-current" => "page"  %>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%= link_to 'Inicio', page_index_path, class:"nav-link active", "arial-current" => "page"  %>
+        </li>
+        <li class="nav-item">
+            <%= link_to 'Crear Serie', new_series_path, class:"nav-link active", "arial-current" => "page"  %>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Buscar</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+
+  <% content_for :title, "Editing Serie" %>
+
+  <div>
+    <%= render "form", series: @series  %>
+  </div>
+  <div class="row d-flex justify-content-center align-items-center gap-3  ">
+    <div class="col-6 mt-4 d-flex justify-content-center gap-3 mb-4">
+      <%= link_to "Cancelar", @series, class: "btn btn-primary" %>
+      <%= link_to "Series", series_index_path, method: :delete, class: "btn btn-danger" %>
+    </div>
+  </div>
+
+
+
+
+
+
+<%
+=begin%>
+ 
+
+
 <% content_for :title, "Editing series" %>
 
 <h1>Editing series</h1>
@@ -9,4 +60,6 @@
 <div>
   <%= link_to "Show this series", @series %> |
   <%= link_to "Back to series", series_index_path %>
-</div>
+</div> 
+<%
+=end%>

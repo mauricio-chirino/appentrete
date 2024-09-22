@@ -1,3 +1,48 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <%= link_to 'AppEntreter', page_index_path, class:"navbar-brand", "arial-current" => "page"  %>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%= link_to 'Inicio', page_index_path, class:"nav-link active", "arial-current" => "page"  %>
+        </li>
+        <li class="nav-item">
+            <%= link_to 'Crear Serie' , new_film_path, class:"nav-link disabled", "arial-current" => "page"  %>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Buscar</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+<% content_for :title, "Nueva Serie" %>
+
+<h1>Crear Serie</h1>
+
+<div class="row center-content ">
+  <%= render "form", series: @series %>
+</div>
+<div class="d-flex justify-content-center gap-2 py-5">
+
+  <%= link_to "Regresar a Series", series_index_path , class: "btn btn-primary" %>
+</div>
+
+
+
+<%
+=begin%>
+ 
 <% content_for :title, "New series" %>
 
 <h1>New series</h1>
@@ -8,4 +53,6 @@
 
 <div>
   <%= link_to "Back to series", series_index_path %>
-</div>
+</div> 
+<%
+=end%>
