@@ -53,52 +53,21 @@
 
 
 
-<
 
 
+ <div id="films">
 
-
-<div class="mb-5">
+     <h1>Peliculas Destacadas</h1>
   <div class="row row-cols-1 row-cols-sm-4 row-cols-md-4 row-cols-lg-4 ">
-    <div class="col"> 
-      <div class="card">
-          <img src="https://unity-img.tbxapis.com/v0/images/9501437dcec0ddab011859581736c9c7/content/6446b2cb3b08e72840d214e6/5b4944237486947608fb7cc40d4e943d/img.jpg?crop=resizeScale&size=POSTER" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Saber mas..</a>
-        </div>
-      </div>
-    </div>
-    <div class="col"> 
-      <div class="card">
-          <img src="https://unity-img.tbxapis.com/v0/images/9501437dcec0ddab011859581736c9c7/content/6446b2cb3b08e72840d214e6/5b4944237486947608fb7cc40d4e943d/img.jpg?crop=resizeScale&size=POSTER" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Saber mas..</a>
-        </div>
-      </div>
-    </div>
-    <div class="col"> 
-      <div class="card">
-          <img src="https://unity-img.tbxapis.com/v0/images/9501437dcec0ddab011859581736c9c7/content/6446b2cb3b08e72840d214e6/5b4944237486947608fb7cc40d4e943d/img.jpg?crop=resizeScale&size=POSTER" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Saber mas..</a>
-        </div>
-      </div>
-    </div>
-    <div class="col"> 
-      <div class="card">
-        <img src="https://unity-img.tbxapis.com/v0/images/9501437dcec0ddab011859581736c9c7/content/6446b2cb3b08e72840d214e6/5b4944237486947608fb7cc40d4e943d/img.jpg?crop=resizeScale&size=POSTER" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Saber mas..</a>
-        </div>
-      </div> 
-    </div> 
-  </div> 
+
+
+      
+    <% @films.each do |film| %>
+
+      <%= render film %>
+
+    <% end %>
+    
+  </div>
 </div>
+
