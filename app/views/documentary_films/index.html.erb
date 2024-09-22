@@ -16,6 +16,18 @@
             <%= link_to 'Crear Documental', new_documentary_film_path, class:"nav-link active", "arial-current" => "page"  %>
         </li>
       </ul>
+      </ul>
+      <ul class="list-unstyled mb-0 d-flex justify-content-center gap-2 mx-4">
+        <li>
+          <%= link_to 'Documentales', documentary_films_path, class: "btn btn-outline-primary btn-sm", role: "button", disabled: true %>
+        </li>
+        <li>
+          <%= link_to 'Peliculas', films_path, class: "btn btn-outline-success btn-sm", role: "button"%>
+        </li>
+        <li>
+          <%= link_to 'Series', series_index_path, class: "btn btn-outline-danger btn-sm", role: "button"%>
+        </li>
+      </ul>      
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Buscar</button>
@@ -29,6 +41,7 @@
 
 
  <div id="documentary_films">
+ <h1 class="my-5">Nuestras Documentales</h1>
   <div class="row row-cols-1 row-cols-sm-4 row-cols-md-4 row-cols-lg-4 ">
       
     <% @documentary_films.each do |documentary_film| %>
