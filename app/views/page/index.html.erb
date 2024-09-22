@@ -54,20 +54,31 @@
 
 
 
-
+  <!-- lista en la portada las peliculas destacadas -->
  <div id="films">
-
-     <h1>Peliculas Destacadas</h1>
+  <h1>Peliculas Destacadas</h1>
   <div class="row row-cols-1 row-cols-sm-4 row-cols-md-4 row-cols-lg-4 ">
-
-
-      
     <% @films.each do |film| %>
-
       <%= render film %>
-
     <% end %>
-    
+  </div>
+
+
+  <!-- lista en la portada los documentales -->
+  <h1 class="mt-5">Documentales Destacados</h1>
+  <div class="row row-cols-1 row-cols-sm-4 row-cols-md-4 row-cols-lg-4 ">
+    <% @documentary_films.each do |film| %>
+      <%= render film %>
+    <% end %>
+  </div>
+
+
+  <!-- Lista en la porta las series -->
+  <h1 class="mt-5">Series Destacadas</h1>
+  <div class="row row-cols-1 row-cols-sm-4 row-cols-md-4 row-cols-lg-4 ">
+    <% @series.each do |film| %>
+      <%= render film %>
+    <% end %>
   </div>
 </div>
 

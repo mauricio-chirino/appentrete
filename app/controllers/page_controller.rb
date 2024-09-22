@@ -7,14 +7,13 @@ class PageController < ApplicationController
   # GET /films or /films.json
   def index
     @films = Film.limit(4) # Solo devuelve 4 películas
+
+    @documentary_films = DocumentaryFilm.limit(4)
+
+   
+    @series = Series.limit(4)
+    
   end
-
-
-
- 
-
-
-
 
 
   private
