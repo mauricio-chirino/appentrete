@@ -17,6 +17,10 @@ class DocumentaryFilmsController < ApplicationController
 
   # GET /documentary_films/1/edit
   def edit
+    #validar de donde viene
+    
+    #@documentary_film=Documentary_film.find(params[:id])
+    
   end
 
   # POST /documentary_films or /documentary_films.json

@@ -1,3 +1,52 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <%= link_to 'AppEntreter', page_index_path, class:"navbar-brand", "arial-current" => "page"  %>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%= link_to 'Inicio', page_index_path, class:"nav-link active", "arial-current" => "page"  %>
+        </li>
+        <li class="nav-item">
+            <%= link_to 'Crear Serie', new_film_path, class:"nav-link active", "arial-current" => "page"  %>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Buscar</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+
+ <div id="series">
+  <div class="row row-cols-1 row-cols-sm-4 row-cols-md-4 row-cols-lg-4 ">
+      
+    <% @series.each do |series| %>
+
+      <%= render series %>
+
+    <% end %>
+  </div>
+</div>
+
+
+
+
+
+
+
+<%
+=begin%>
+ 
 <p style="color: green"><%= notice %></p>
 
 <% content_for :title, "Series" %>
@@ -7,10 +56,20 @@
 <div id="series">
   <% @series.each do |series| %>
     <%= render series %>
-    <p>
-      <%= link_to "Show this series", series %>
+    <p> 
+<%
+=end%>
+      <%
+=begin%>
+ <%= link_to "Show this series", series %> 
+<%
+
     </p>
   <% end %>
 </div>
-
-<%= link_to "New series", new_series_path %>
+=end%>
+<%
+=begin%>
+ <%= link_to "New series", new_series_path %> 
+<%
+=end%>

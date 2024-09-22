@@ -1,3 +1,83 @@
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <%= link_to 'AppEntreter', page_index_path, class:"navbar-brand", "arial-current" => "page"  %>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%= link_to 'Inicio', page_index_path, class:"nav-link active", "arial-current" => "page"  %>
+        </li>
+        <li class="nav-item">
+            <%= link_to 'Crear Documental', new_documentary_film_path, class:"nav-link active", "arial-current" => "page"  %>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Buscar</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+<%= render @documentary_film %>
+
+
+
+
+
+  <%
+=begin%>
+ <div class="mt-5">
+    <%= link_to "Regresar to films", films_path, class: "btn btn-primary" %> |
+    <%= link_to "Edit", edit_film_path(@film), class: "btn btn-primary"%> |
+    <%= link_to "Destroy this film", @film, method: :delete, class: "btn btn-danger" %>
+  </div>   
+<%
+=end%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%
+=begin%>
+ 
+
+
+
+
+
+
+
+
 <p style="color: green"><%= notice %></p>
 
 <%= render @documentary_film %>
@@ -7,4 +87,6 @@
   <%= link_to "Back to documentary films", documentary_films_path %>
 
   <%= button_to "Destroy this documentary film", @documentary_film, method: :delete %>
-</div>
+</div> 
+<%
+=end%>

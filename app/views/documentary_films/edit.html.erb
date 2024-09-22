@@ -1,12 +1,45 @@
-<% content_for :title, "Editing documentary film" %>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <%= link_to 'AppEntreter', page_index_path, class:"navbar-brand", "arial-current" => "page"  %>
 
-<h1>Editing documentary film</h1>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%= link_to 'Inicio', page_index_path, class:"nav-link active", "arial-current" => "page"  %>
+        </li>
+        <li class="nav-item">
+            <%= link_to 'Crear Documental', new_documentary_film_path, class:"nav-link active", "arial-current" => "page"  %>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Buscar</button>
+      </form>
+    </div>
+  </div>
+</nav>
 
-<%= render "form", documentary_film: @documentary_film %>
 
-<br>
 
-<div>
-  <%= link_to "Show this documentary film", @documentary_film %> |
-  <%= link_to "Back to documentary films", documentary_films_path %>
-</div>
+
+
+
+
+
+
+
+
+  <% content_for :title, "Editing documentary_film" %>
+
+  <div>
+    <%= render "form", documentary_film: @documentary_film  %>
+  </div>
+  <div class="row d-flex justify-content-center align-items-center gap-3  ">
+    <div class="col-6 mt-4 d-flex justify-content-center gap-3 mb-4">
+      <%= link_to "Cancelar", @documentary_film , class: "btn btn-primary" %>
+      <%= link_to "Documentales", documentary_films_path, method: :delete, class: "btn btn-danger" %>
+    </div>
+  </div>

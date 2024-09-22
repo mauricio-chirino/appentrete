@@ -1,22 +1,42 @@
-<div id="<%= dom_id documentary_film %>">
-  <p>
-    <strong>Name:</strong>
-    <%= documentary_film.name %>
-  </p>
+<!-- controla los espacios vacios en card-tex -->
+<div class="col">
+  <%= javascript_include_tag "controllers/espaciovacio_controller" %>
 
-  <p>
-    <strong>Sinopsis:</strong>
-    <%= documentary_film.sinopsis %>
-  </p>
+  <div id="<%= dom_id documentary_film %>" class="row d-flex justify-content-center align-items-center gap-3 mt-5 " >
+        <div class="card" style="width: 18rem;">
+          <img src="<%= documentary_film.imagen %>" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><%= documentary_film.name %></h5>
+              <p class="card-text {{ texto ? '' : 'empty-text' }}"><%= documentary_film.sinopsis %></p> <!-- controla que no exista texto vacio -->
 
-  <p>
-    <strong>Director:</strong>
-    <%= documentary_film.director %>
-  </p>
 
-  <p>
-    <strong>Imagen:</strong>
-    <%= documentary_film.imagen %>
-  </p>
 
-</div>
+
+              <% if params[:id] %>
+                <% documentary_film = DocumentaryFilm.find(params[:id]) %>
+                
+                <div id="<%= dom_id documentary_film %>">
+                  <p>
+                    <strong>Name:</strong>
+                    <%= documentary_film.name %>
+                  </p>
+                  <p>
+                    <strong>Director:</strong>
+                    <%= documentary_film.director %>
+                  </p>
+                </div>
+                <div class="d-flex justify-content-center gap-2">
+                    <%= link_to "Regresar", documentary_films_path, class: "btn btn-primary" %>
+                    <%= link_to "Editar", edit_documentary_film_path(@documentary_film), class: "btn btn-primary"%>
+                    <%= link_to "Eliminar", @documentary_film, method: :delete, class: "btn btn-danger" %>
+                  </div>
+
+              <% else %>
+                <%= link_to "Ver mas..", documentary_film, class: "btn btn-primary" %>
+              <% end %>
+              
+            </div>
+        </div>
+
+  </div>
+</div>  
