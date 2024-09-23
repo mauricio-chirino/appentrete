@@ -25,9 +25,10 @@ class SeriesController < ApplicationController
 
     respond_to do |format|
       if @series.save
-        format.html { redirect_to @series, notice: "Series was successfully created." }
-        format.json { render :show, status: :created, location: @series }
+        format.html { redirect_to @series, notice: "La serie fue creada correctamente" }
+        format.json { render :index, status: :created, location: @series }
       else
+        # Si la base de datos no guarda el registro, se redirige a la vista de "new"
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @series.errors, status: :unprocessable_entity }
       end
@@ -38,7 +39,7 @@ class SeriesController < ApplicationController
   def update
     respond_to do |format|
       if @series.update(series_params)
-        format.html { redirect_to @series, notice: "Series was successfully updated." }
+        format.html { redirect_to @series, notice: "Serie fue actualizada." }
         format.json { render :show, status: :ok, location: @series }
       else
         format.html { render :edit, status: :unprocessable_entity }

@@ -30,9 +30,10 @@ class FilmsController < ApplicationController
 
     respond_to do |format|
       if @film.save
-        format.html { redirect_to @film, notice: "La pelicula fue creada." }
-        format.json { render :show, status: :created, location: @film }
+        format.html { redirect_to @film, notice: "La pelicula fue creada correctamente." }
+        format.json { render :index, status: :created, location: @film }
       else
+        # Si la base de datos no guarda el registro, se redirige a la vista de "new"
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @film.errors, status: :unprocessable_entity }
       end

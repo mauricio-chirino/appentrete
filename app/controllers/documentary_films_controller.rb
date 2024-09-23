@@ -29,9 +29,10 @@ class DocumentaryFilmsController < ApplicationController
 
     respond_to do |format|
       if @documentary_film.save
-        format.html { redirect_to @documentary_film, notice: "Documentary film was successfully created." }
-        format.json { render :show, status: :created, location: @documentary_film }
+        format.html { redirect_to @documentary_film, notice: "El documental fue creado correctamente" }
+        format.json { render :index, status: :created, location: @documentary_film }
       else
+        # Si la base de datos no guarda el registro, se redirige a la vista de "new"
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @documentary_film.errors, status: :unprocessable_entity }
       end
@@ -42,7 +43,7 @@ class DocumentaryFilmsController < ApplicationController
   def update
     respond_to do |format|
       if @documentary_film.update(documentary_film_params)
-        format.html { redirect_to @documentary_film, notice: "Documentary film was successfully updated." }
+        format.html { redirect_to @documentary_film, notice: "Documental fue actualizado." }
         format.json { render :show, status: :ok, location: @documentary_film }
       else
         format.html { render :edit, status: :unprocessable_entity }
