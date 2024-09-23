@@ -2,10 +2,9 @@
   <% if documentary_film.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(documentary_film.errors.count, "error") %> encontrados, no se puede grabar:</h2>
-
       <ul>
         <% documentary_film.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <li><%= error.full_message %></li>
         <% end %>
       </ul>
     </div>
@@ -17,58 +16,38 @@
 <div class="row d-flex justify-content-center align-items-center">
   <div class="card mt-4" style="width: 18rem;">
     <% if !params[:new] %>
-    <img src="<%= form.object.imagen%>" class="card-img-top" >
+      <img src="<%= form.object.imagen%>" class="card-img-top" >
     <% end %>
     <div class="card-body">
       <h5 class="card-title"><%= form.object.name %></h5>
       <p class="card-text">
-      <div>
-      <%= form.label :Nombre, style: "display: block" %>
-      <%= form.text_field :name, required: true %>
-    </div>
-
-    <div>
-      <%= form.label :sinopsis, style: "display: block" %>
-      <%= form.text_field :sinopsis, required: true %>
-    </div>
-
-    <div>
-      <%= form.label :director, style: "display: block" %>
-      <%= form.text_field :director, required: true %>
-    </div>
-
-    <div>
-      <%= form.label :Caratula, style: "display: block" %>
-      <%= form.text_area :imagen, id: "imagen_url", required: true %>
-    </div>
-
-    <div class="mt-2">
-
-      <%
-=begin%>
- <% if params[:new] %>
-        <%= form.submit "Grabar Pelicula", class: 'btn btn-primary' %>
-      <% else %>    
-        <%= form.submit "Actualizar Película", class: 'btn btn-primary' %>
-      <% end %> 
-<%
-=end%>
-      
-      <div class="mt-2">
-  <% if @documentary_film.new_record? %>
-    <%= form.submit "Grabar Documental", class: 'btn btn-primary' %>
-  <% else %>    
-    <%= form.submit "Actualizar Documental", class: 'btn btn-primary' %>
-  <% end %>
-</div>
-
-
-
-    </div>
-    </p>
-      
+        <div>
+          <%= form.label :Nombre, style: "display: block" %>
+          <%= form.text_field :name, required: true %>
+        </div>
+        <div>
+          <%= form.label :sinopsis, style: "display: block" %>
+          <%= form.text_field :sinopsis, required: true %>
+        </div>
+        <div>
+          <%= form.label :director, style: "display: block" %>
+          <%= form.text_field :director, required: true %>
+        </div>
+        <div>
+          <%= form.label :Caratula, style: "display: block" %>
+          <%= form.text_area :imagen, id: "imagen_url", required: true %>
+        </div>
+        <div class="mt-2">
+          <div class="mt-2">
+            <% if @documentary_film.new_record? %>
+              <%= form.submit "Grabar Documental", class: 'btn btn-primary' %>
+            <% else %>    
+              <%= form.submit "Actualizar Documental", class: 'btn btn-primary' %>
+            <% end %>
+          </div>
+        </div>
+      </p>  
     </div>
   </div>
 </div>
-
 <% end %>
