@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: appentrete-deployment
+  labels:
+    app: appentrete
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: appentrete
+  template:
+    metadata:
+      labels:
+        app: appentrete
+    spec:
+      containers:
+      - name: appentrete
+        image: chimasadus/appentrete:latest  # Imagen en Docker Hub
+        ports:
+        - containerPort: 3000  # El puerto que expone la app (ajustar si es diferente)
+        env:
+        - name: RAILS_MASTER_KEY
+          valueFrom:
+            secretKeyRef:
+              name: rails-master-key
+              key: master_key  # Asegúrate de que este secreto existe
+        volumeMounts:
+        - name: postgres-data
+          mountPath: /var/lib/postgresql/data
+      volumes:
+      - name: postgres-data
+        persistentVolumeClaim:
+          claimName: postgres-pvc  # Asegúrate de tener un PVC configurado
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: appentrete-service
+spec:
+  selector:
+    app: appentrete
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000  # El puerto en el contenedor donde está corriendo la app
+  type: LoadBalancer  # O ClusterIP si no es necesario acceso externo
