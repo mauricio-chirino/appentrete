@@ -119,6 +119,9 @@ spec:
         - name: APPENTRETE_DATABASE_NAME
           value: appentrete_production  # Nombre de la base de datos
         volumeMounts:
-        - name: postgres-data
-          mountPath: /var/lib/postgresql/data
+        - name: postgres-data  # Se monta el volumen "postgres-data"
+          mountPath: /var/lib/postgresql/data  # Ruta dentro del contenedor donde se montará el volumen
       volumes:
+      - name: postgres-data  # Definir aquí el volumen "postgres-data"
+        persistentVolumeClaim:
+          claimName: postgres-pvc  # Asociamos el volumen con el PVC creado
