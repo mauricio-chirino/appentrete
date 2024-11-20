@@ -112,7 +112,7 @@ spec:
         - name: APPENTRETE_DATABASE_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: postgres-secret
+              name: appentrete-db-password  # Referencia al secret correcto
               key: password
         - name: APPENTRETE_DATABASE_HOST
           value: postgres-service  # Nombre del servicio PostgreSQL
