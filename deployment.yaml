@@ -71,7 +71,7 @@ metadata:
   name: postgres-secret
 type: Opaque
 data:
-  password: <BASE64_ENCODED_PASSWORD>  # Reemplaza con la contraseña codificada en Base64
+  password: QWxkdXMxMDI0QA==  # Reemplaza con la contraseña codificada en Base64
 ---
 apiVersion: v1
 kind: Secret
@@ -79,7 +79,7 @@ metadata:
   name: rails-master-key
 type: Opaque
 data:
-  master_key: <BASE64_ENCODED_MASTER_KEY>  # Reemplaza con el contenido codificado en Base64 del master.key
+  master_key: YmNmYjM3ZTZlZjE1MTgyZjk2NTNlOTgyYTEzOTM0MDE= # Reemplaza con el contenido codificado en Base64 del master.key
 ---
 # Rails Application Deployment
 apiVersion: apps/v1
