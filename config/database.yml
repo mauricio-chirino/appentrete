@@ -80,10 +80,10 @@ test:
 #
 production:
   <<: *default
-  database: appentrete_production
-  username: chima
-  password: <%= ENV["APPENTRETE_DATABASE_PASSWORD"] %>
-  host: <%= ENV["APPENTRETE_DATABASE_HOST"] || "localhost" %>
-  port: 5432
-  pool: 15
-  timeout: 5000
+  database: appentrete_production  # Nombre de tu base de datos en producción
+  username: chima  # Usuario de la base de datos
+  password: <%= ENV["APPENTRETE_DATABASE_PASSWORD"] %>  # Contraseña, asegurate de que esté configurada en tus variables de entorno
+  host: <%= ENV["APPENTRETE_DATABASE_HOST"] || "postgres-service" %>  # Apunta al servicio de PostgreSQL en Kubernetes
+  port: 5432  # Puerto estándar de PostgreSQL
+  pool: 15  # Número de conexiones en el pool
+  timeout: 5000  # Tiempo de espera
