@@ -1,3 +1,87 @@
+# PostgreSQL Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-deployment
+  labels:
+    app: postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+      - name: postgres
+        image: postgres:15  # Imagen oficial de PostgreSQL
+        ports:
+        - containerPort: 5432  # Puerto estándar de PostgreSQL
+        env:
+        - name: POSTGRES_USER
+          value: chima
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: postgres-secret
+              key: password
+        - name: POSTGRES_DB
+          value: appentrete_production
+        volumeMounts:
+        - name: postgres-storage
+          mountPath: /var/lib/postgresql/data
+      volumes:
+      - name: postgres-storage
+        persistentVolumeClaim:
+          claimName: postgres-pvc
+---
+# PostgreSQL Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-service
+  labels:
+    app: postgres
+spec:
+  ports:
+  - port: 5432
+    targetPort: 5432
+  selector:
+    app: postgres
+---
+# Persistent Volume Claim for PostgreSQL
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-pvc
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+---
+# Secrets for PostgreSQL and Rails
+apiVersion: v1
+kind: Secret
+metadata:
+  name: postgres-secret
+type: Opaque
+data:
+  password: <BASE64_ENCODED_PASSWORD>  # Reemplaza con la contraseña codificada en Base64
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: rails-master-key
+type: Opaque
+data:
+  master_key: <BASE64_ENCODED_MASTER_KEY>  # Reemplaza con el contenido codificado en Base64 del master.key
+---
+# Rails Application Deployment
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -18,21 +102,29 @@ spec:
       - name: appentrete
         image: chimasadus/appentrete:latest  # Imagen en Docker Hub
         ports:
-        - containerPort: 3001  # El puerto que expone la app (ajustar si es diferente)
+        - containerPort: 3001  # Puerto que expone la aplicación
         env:
         - name: RAILS_MASTER_KEY
           valueFrom:
             secretKeyRef:
               name: rails-master-key
-              key: master_key  # Asegúrate de que este secreto existe
+              key: master_key
+        - name: APPENTRETE_DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: postgres-secret
+              key: password
+        - name: APPENTRETE_DATABASE_HOST
+          value: postgres-service  # Nombre del servicio PostgreSQL
         volumeMounts:
         - name: postgres-data
           mountPath: /var/lib/postgresql/data
       volumes:
       - name: postgres-data
         persistentVolumeClaim:
-          claimName: postgres-pvc  # Asegúrate de tener un PVC configurado
+          claimName: postgres-pvc
 ---
+# Rails Application Service
 apiVersion: v1
 kind: Service
 metadata:
@@ -43,5 +135,5 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 3001  # El puerto en el contenedor donde está corriendo la app
-  type: LoadBalancer  # O ClusterIP si no es necesario acceso externo
+      targetPort: 3001  # Puerto en el contenedor donde corre la app
+  type: LoadBalancer
