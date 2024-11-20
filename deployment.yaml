@@ -18,7 +18,7 @@ spec:
       - name: appentrete
         image: chimasadus/appentrete:latest  # Imagen en Docker Hub
         ports:
-        - containerPort: 3000  # El puerto que expone la app (ajustar si es diferente)
+        - containerPort: 3001  # El puerto que expone la app (ajustar si es diferente)
         env:
         - name: RAILS_MASTER_KEY
           valueFrom:
@@ -43,5 +43,5 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 3000  # El puerto en el contenedor donde está corriendo la app
+      targetPort: 3001  # El puerto en el contenedor donde está corriendo la app
   type: LoadBalancer  # O ClusterIP si no es necesario acceso externo
