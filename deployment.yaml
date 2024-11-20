@@ -112,28 +112,13 @@ spec:
         - name: APPENTRETE_DATABASE_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: appentrete-db-password  # Referencia al secret correcto
+              name: postgres-secret  # Referencia al secret correcto
               key: password
         - name: APPENTRETE_DATABASE_HOST
           value: postgres-service  # Nombre del servicio PostgreSQL
+        - name: APPENTRETE_DATABASE_NAME
+          value: appentrete_production  # Nombre de la base de datos
         volumeMounts:
         - name: postgres-data
           mountPath: /var/lib/postgresql/data
       volumes:
-      - name: postgres-data
-        persistentVolumeClaim:
-          claimName: postgres-pvc
----
-# Rails Application Service
-apiVersion: v1
-kind: Service
-metadata:
-  name: appentrete-service
-spec:
-  selector:
-    app: appentrete
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 3001  # Puerto en el contenedor donde corre la app
-  type: LoadBalancer
